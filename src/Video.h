@@ -9,6 +9,7 @@ class Video
 public:
     Video();
     ~Video();
+    static void Video::init();
     SDL_Surface* loadImg(std::string filename);
     static void onScreen(SDL_Surface* imageToShow, int x, int y);
     static void renderIt();

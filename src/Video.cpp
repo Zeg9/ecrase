@@ -9,15 +9,20 @@ SDL_Surface *Video::screen(0);
 
 Video::Video()
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    Video::screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
-    SDL_WM_SetCaption( "ECRASE", NULL );               
 }
 
 Video::~Video()
 {
     SDL_FreeSurface(screen);            
 }
+
+void Video::init()
+{
+    SDL_Init(SDL_INIT_EVERYTHING);
+    Video::screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
+    SDL_WM_SetCaption( "ECRASE", NULL );
+}
+
 SDL_Surface* Video::loadImg(std::string filename)
 {
     std::cout<<"Loading file: "<<filename<<std::endl;
