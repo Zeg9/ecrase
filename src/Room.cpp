@@ -18,13 +18,19 @@ Room::~Room()
 void Room::loadRoom(std::string filename)
 {
      Video rvd;
-     std::string header;
-     std::fstream file;
+     int n=0;
+     std::string header[10];
+     std::ifstream file;
      file.open(filename.c_str());
-     getline(file,header);
-     std::cout<<header<<std::endl;
+     while(!file.eof())
+     {
+         getline(file,header[n]);
+         std::cout<<header[n]<<std::endl;
+         n++;
+     }
+     n=0;
      SDL_Surface* room;
-     room = rvd.loadImg(header);
+     room = rvd.loadImg(header[0]);
      rvd.onScreen(room, 0, 0);
      file.close();
 }
