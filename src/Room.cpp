@@ -23,9 +23,8 @@ void Room::loadRoom(std::string filename)
      file.open(filename.c_str());
      getline(file,header);
      std::cout<<header<<std::endl;
-     std::string picname = "start.png";
      SDL_Surface* room;
-     room = rvd.loadImg(picname);
+     room = rvd.loadImg(header);
      rvd.onScreen(room, 0, 0);
      file.close();
 }
