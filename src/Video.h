@@ -10,6 +10,7 @@ public:
     Video();
     ~Video();
     static void Video::init();
+    static void Video::intro();
     SDL_Surface* loadImg(std::string filename);
     static void onScreen(SDL_Surface* imageToShow, int x, int y);
     static void renderIt();

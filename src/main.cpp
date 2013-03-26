@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
 {
     Video d;
     d.init();
-    Room::loadRoom("le.txt");
+    d.intro();
+    //Room::loadRoom("le.txt");
     d.renderIt();
     SDL_Delay(5000);
     SDL_Quit();
