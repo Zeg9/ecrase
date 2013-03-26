@@ -1,5 +1,5 @@
 #include <SDL/SDL.h>
-#include <SDL/SDL_Image.h>
+#include <SDL/SDL_image.h>
 #include <string>
 #ifndef __ROOM_H__
 #define __ROOM_H__

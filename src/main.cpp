@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <SDL/SDL.h>
-#include <SDL/SDL_Image.h>
+#include <SDL/SDL_image.h>
 #include "Video.h"
 #include "Room.h"
 
