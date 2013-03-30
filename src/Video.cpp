@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL/SDL_Image.h>
 #include "Video.h"
 
 SDL_Surface *Video::screen(0);
