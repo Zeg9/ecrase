@@ -1,3 +1,4 @@
-ecrase
+ecrase - HIGHLY EXPERIMENTAL BRANCH!!!
 ======
-Coming soon.
+May not work. May damage your computer. 
+For dev use only.
