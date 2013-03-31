@@ -13,8 +13,7 @@ Video::Video()
 }
 
 Video::~Video()
-{
-    SDL_FreeSurface(screen);            
+{          
 }
 
 void Video::init()

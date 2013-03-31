@@ -9,16 +9,21 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    bool running = false;
+    bool running = true;
     Video d;
     d.init();
     d.intro();
-    while(running==true)
+    if(running==true)
     {
-        //Room::loadRoom("le.txt");
+        int n=0;
+        SDL_Surface* test;
+        test = d.loadImg(("../data/ecrase.png"));
+        d.onScreen(test, 0, 0);
         d.renderIt();
         SDL_Delay(5000);
+        SDL_FreeSurface(test);
     }
     SDL_Quit();
+    SDL_FreeSurface(Video::screen);  
     return 0;
 }
