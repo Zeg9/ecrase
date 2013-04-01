@@ -10,18 +10,14 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     bool running = true;
-    Video d;
+    Video &d = getVideo();
     d.init();
     d.intro();
     if(running==true)
     {
-        int n=0;
-        SDL_Surface* test;
-        test = d.loadImg(("../data/ecrase.png"));
-        d.onScreen(test, 0, 0);
+        Room::loadRoom("living_room.txt");
         d.renderIt();
         SDL_Delay(5000);
-        SDL_FreeSurface(test);
     }
     SDL_Quit();
     SDL_FreeSurface(Video::screen);  
