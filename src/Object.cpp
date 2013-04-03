@@ -3,30 +3,19 @@
 #include <fstream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
+#include "Object.h"
 #include "Video.h"
-#include "Room.h"
 
-SDL_Surface *Room::bgd;//Background image
-SDL_Surface *Room::fgd;//Foreground image
-std::string objects[30];//Stores all objects
-
-Room::Room()
+void Object::loadObject(std::string filename)//Equivalent to loadRoom();
 {
-}
-
-Room::~Room()
-{
-}
-
-void Room::loadRoom(std::string filename)
-{
+    /* TODO: Implement this properly!
     int n = 0;
     Video &d = getVideo();
     std::string data[30];//Output from file
     std::string name[30];//Name of object
     std::string value[30];//Value of object
     std::ifstream file;//Filestream
-    file.open(("../script/rooms/"+filename).c_str());
+    file.open(("../script/objects/"+filename).c_str());
     while(!file.eof())
     {
         getline(file, data[n]);//Read line from file
@@ -34,11 +23,15 @@ void Room::loadRoom(std::string filename)
         name[n] = data[n].substr(0, strpos);//Cut name
         value[n] = data[n].substr(strpos+1,30);//Cut value
         //Different types of values:
-        if(name[n]=="bgd")
+        if(name[n]=="image")
         {
-            Room::bgd = d.loadImg("../data/rooms/"+value[n]);
+            Room::bgd = d.loadImg("../data/objects/"+value[n]);
         }
-        else if(name[n]=="fgd")
+        else if(name[n]=="inv")
+        {
+            Room::fgd = d.loadImg("../data/objects/"+value[n]);
+        }
+        else if(name[n]=="inventory")
         {
             Room::fgd = d.loadImg("../data/rooms/"+value[n]);
         }
@@ -47,4 +40,14 @@ void Room::loadRoom(std::string filename)
         n++;
     }
     file.close();
+    */
 }
+
+void Object::leftclickObject(int x, int y)
+{
+}
+
+void Object::rightclickObject(int x, int y)
+{
+}
+

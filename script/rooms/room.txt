@@ -1,0 +1,3 @@
+fgd=fore.png
+test=nothinghere
+bgd=back.png

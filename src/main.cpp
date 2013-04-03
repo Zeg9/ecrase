@@ -1,25 +1,26 @@
-#include <cstdlib>
 #include <iostream>
 #include <SDL/SDL.h>
-#include <SDL/SDL_Image.h>
+#include <SDL/SDL_image.h>
 #include "Video.h"
 #include "Room.h"
-
-using namespace std;
+#include "Layers.h"
+#include "Event.h"
 
 int main(int argc, char *argv[])
 {
-    bool running = true;
     Video &d = getVideo();
-    d.init();
-    d.intro();
-    if(running==true)
+    int oldticks = 0;
+    int fps;//Frames per second
+    int test;
+    Room::loadRoom("room.txt");
+    while(true)
     {
-        Room::loadRoom("living_room.txt");
+        Event::gameEvent();
+        Layers::drawLayers();
         d.renderIt();
-        SDL_Delay(5000);
+        fps = 1000/(SDL_GetTicks()-oldticks);
+        //std::cout<<fps<<std::endl;
+        oldticks = SDL_GetTicks();
+        SDL_Delay(17);
     }
-    SDL_Quit();
-    SDL_FreeSurface(Video::screen);  
-    return 0;
 }
