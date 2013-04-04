@@ -6,7 +6,7 @@
 #include "Object.h"
 #include "Video.h"
 
-void Object::loadObject(std::string filename)//Equivalent to loadRoom();
+void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom();
 {
     /* TODO: Implement this properly!
     int n = 0;
@@ -45,9 +45,11 @@ void Object::loadObject(std::string filename)//Equivalent to loadRoom();
 
 void Object::leftclickObject(int x, int y)
 {
+    std::cout<<"Leftclick at ("<<x<<","<<y<<")."<<std::endl;
 }
 
 void Object::rightclickObject(int x, int y)
 {
+    std::cout<<"Rightclick at ("<<x<<","<<y<<")."<<std::endl;
 }
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "Video.h"
@@ -21,10 +22,14 @@ Room::~Room()
 void Room::loadRoom(std::string filename)
 {
     int n = 0;
+    int x = 0;
+    int y = 0;
     Video &d = getVideo();
     std::string data[30];//Output from file
     std::string name[30];//Name of object
     std::string value[30];//Value of object
+    std::string objx;//Object - x position
+    std::string objy;//Object - y position
     std::ifstream file;//Filestream
     file.open(("../script/rooms/"+filename).c_str());
     while(!file.eof())
@@ -42,8 +47,17 @@ void Room::loadRoom(std::string filename)
         {
             Room::fgd = d.loadImg("../data/rooms/"+value[n]);
         }
+        else if(name[n]=="obj")
+        {
+             getline(file, objx);//Read line from file
+             std::istringstream xtoint(objx);
+             xtoint >> x;
+             getline(file, objy);//Read line from file
+             std::istringstream ytoint(objy);
+             ytoint >> y;
+             std::cout<<"Loading object "<<data[n]<<" at ("<<x<<","<<y<<")..."<<std::endl;
+        }
         //These were all types
-        std::cout<<"Line "<<n<<": "<<data[n]<<std::endl;
         n++;
     }
     file.close();

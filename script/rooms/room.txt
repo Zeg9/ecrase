@@ -1,3 +1,8 @@
-fgd=fore.png
-test=nothinghere
-bgd=back.png
+bgd=liro.png
+fgd=liner.png
+obj=01
+123
+345
+obj=02
+300
+400
