@@ -22,10 +22,25 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include "Object.h"
 #include "Video.h"
 
+Object::Object()
+{
+    objname="";
+    objimage = NULL;
+    inv = NULL;
+    objx = 0;
+    objy = 0;
+}
+
+Object::~Object()
+{
+}
+
 void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom();
 {
-    /* TODO: Implement this properly!
     int n = 0;
+    //Give positions of object in room
+    objx = x;
+    objy = y;
     Video &d = getVideo();
     std::string data[30];//Output from file
     std::string name[30];//Name of object
@@ -41,22 +56,36 @@ void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom
         //Different types of values:
         if(name[n]=="image")
         {
-            Room::bgd = d.loadImg("../data/objects/"+value[n]);
+            objimage = d.loadImg("../data/objects/"+value[n]);
         }
         else if(name[n]=="inv")
         {
-            Room::fgd = d.loadImg("../data/objects/"+value[n]);
+            inv = d.loadImg("../data/objects/"+value[n]);
         }
-        else if(name[n]=="inventory")
+        else if(name[n]=="name")
         {
-            Room::fgd = d.loadImg("../data/rooms/"+value[n]);
+            objname = value[n];
+            std::cout<<"Object \""<<value[n]<<"\" loaded."<<std::endl;
+        }
+        //TODO: Implement scripting here
+        else if(name[n]=="onlook")
+        {
+             
+        }
+        else if(name[n]=="oninteract")
+        {
+             
         }
         //These were all types
-        std::cout<<"Line "<<n<<": "<<data[n]<<std::endl;
         n++;
     }
     file.close();
-    */
+}
+
+void Object::imageObject()
+{
+    Video &d = getVideo();
+    d.onScreen(objimage, objx, objy);
 }
 
 void Object::leftclickObject(int x, int y)
@@ -69,3 +98,8 @@ void Object::rightclickObject(int x, int y)
     std::cout<<"Rightclick at ("<<x<<","<<y<<")."<<std::endl;
 }
 
+Object &getObject(int n)
+{
+    static Object objects[20];
+    return objects[n];
+}

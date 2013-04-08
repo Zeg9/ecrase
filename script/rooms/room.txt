@@ -1,8 +1,8 @@
 bgd=liro.png
 fgd=liner.png
-obj=01
+obj=01.txt
 123
 345
-obj=02
-300
+obj=02.txt
 400
+150

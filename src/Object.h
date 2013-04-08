@@ -25,18 +25,19 @@ class Object
 public:
     Object();
     ~Object();
-    static void loadObject(std::string filename, int x, int y);
-    static void leftclickObject(int x, int y);
-    static void rightclickObject(int x, int y);
-    static SDL_Surface *image[20];
-    static SDL_Surface *inv[20];
-    static std::string object [20];
-    static SDL_Rect surface[20];
+    void loadObject(std::string filename, int x, int y);
+    void leftclickObject(int x, int y);
+    void rightclickObject(int x, int y);
+    void imageObject();
+private:
+    std::string objname;
+    SDL_Surface *objimage;
+    SDL_Surface *inv;
+    SDL_Rect surface; 
+    int objx;
+    int objy;
 };
 
-
-
-
-
+Object &getObject(int n);
 
 #endif //__OBJECT_H__

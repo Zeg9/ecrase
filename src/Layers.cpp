@@ -20,6 +20,7 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include "Video.h"
 #include "Layers.h"
 #include "Room.h"
+#include "Object.h"
 
 Layers::Layers()
 {
@@ -31,8 +32,14 @@ Layers::~Layers()
 
 void Layers::drawLayers()
 {
-     
+     int objnr = 0;
      getVideo().onScreen(Room::bgd, 0, 0);//Draw the background
+     while (objnr!=19)
+     {
+         Object &obj = getObject(objnr);
+         obj.imageObject();
+         objnr++;
+     }
      //TODO: Objects and player here
      getVideo().onScreen(Room::fgd, 0, 0);//Draw the foreground
 }

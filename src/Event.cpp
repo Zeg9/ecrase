@@ -45,13 +45,15 @@ void Event::gameEvent()
             {
                 x = event.button.x; 
                 y = event.button.y;
-                Object::leftclickObject(x, y);
+                std::cout<<x<<" or "<<y<<std::endl;
+                //Object::leftclickObject(x, y);
             }
             else if( event.button.button == SDL_BUTTON_RIGHT ) 
             {
                 x = event.button.x; 
                 y = event.button.y;
-                Object::rightclickObject(x, y);
+                std::cout<<x<<" not "<<y<<std::endl;
+                //Object::rightclickObject(x, y);
             }
         }
     }

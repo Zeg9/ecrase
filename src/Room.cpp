@@ -22,6 +22,7 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include <SDL/SDL_image.h>
 #include "Video.h"
 #include "Room.h"
+#include "Object.h"
 
 SDL_Surface *Room::bgd;//Background image
 SDL_Surface *Room::fgd;//Foreground image
@@ -38,6 +39,7 @@ Room::~Room()
 void Room::loadRoom(std::string filename)
 {
     int n = 0;
+    int objnr = 0;
     int x = 0;
     int y = 0;
     Video &d = getVideo();
@@ -65,16 +67,19 @@ void Room::loadRoom(std::string filename)
         }
         else if(name[n]=="obj")
         {
+             Object &obj = getObject(objnr);
              getline(file, objx);//Read line from file
              std::istringstream xtoint(objx);
              xtoint >> x;
              getline(file, objy);//Read line from file
              std::istringstream ytoint(objy);
              ytoint >> y;
-             std::cout<<"Loading object "<<data[n]<<" at ("<<x<<","<<y<<")..."<<std::endl;
+             obj.loadObject(value[n], x, y);
+             objnr++;
         }
         //These were all types
         n++;
     }
     file.close();
+    objnr=0;
 }
