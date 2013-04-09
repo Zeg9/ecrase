@@ -29,13 +29,17 @@ public:
     void leftclickObject(int x, int y);
     void rightclickObject(int x, int y);
     void imageObject();
+    void clearObject();
 private:
     std::string objname;
+    std::string objinfo;
+    std::string door;
     SDL_Surface *objimage;
     SDL_Surface *inv;
     SDL_Rect objsurf; 
     int objx;
     int objy;
+    int objyline;
 };
 
 Object &getObject(int n);

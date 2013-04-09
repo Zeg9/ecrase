@@ -1,3 +1,4 @@
 name=A beautiful vase
 image=01.png
 inv=01.png
+info=Looks greek.

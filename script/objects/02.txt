@@ -1,3 +1,5 @@
 name=Exit
 image=02.png
 inv=02.png
+info=It seems to be a door.
+door=room2.txt

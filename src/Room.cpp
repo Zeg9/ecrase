@@ -39,6 +39,11 @@ Room::~Room()
 void Room::loadRoom(std::string filename)
 {
     int n = 0;
+    for(n=0; n!=19; n++)
+    {
+        Object &obj = getObject(n);
+        obj.clearObject();
+    }
     int objnr = 0;
     int x = 0;
     int y = 0;

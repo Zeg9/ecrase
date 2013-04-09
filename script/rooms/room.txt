@@ -1,5 +1,5 @@
-bgd=liro.png
-fgd=liner.png
+bgd=01.png
+fgd=logo.png
 obj=01.txt
 123
 345

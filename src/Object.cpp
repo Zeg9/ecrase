@@ -21,14 +21,18 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include <SDL/SDL_image.h>
 #include "Object.h"
 #include "Video.h"
+#include "Room.h"
 
 Object::Object()
 {
     objname="";
+    objinfo="";
+    door = "";
     objimage = NULL;
     inv = NULL;
     objx = 0;
     objy = 0;
+    objyline = 900;
 }
 
 Object::~Object()
@@ -38,6 +42,7 @@ Object::~Object()
 void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom();
 {
     int n = 0;
+    int nr = 0;
     objsurf.x = x;
     objsurf.y = y;
     //Give positions of object in room
@@ -69,22 +74,22 @@ void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom
         else if(name[n]=="name")
         {
             objname = value[n];
-            std::cout<<"Object \""<<value[n]<<"\" loaded."<<std::endl;
         }
-        //TODO: Implement scripting here
-        else if(name[n]=="onlook")
+        else if(name[n]=="door")
         {
-             
+            door = value[n];
+        }
+        else if(name[n]=="info")
+        {
+            objinfo = value[n];
         }
         else if(name[n]=="oninteract")
         {
-             
         }
         //These were all types
         n++;
     }
     file.close();
-    std::cout<<"("<<objsurf.x<<","<<objsurf.y<<","<<objsurf.w<<","<<objsurf.h<<")..."<<std::endl;
 }
 
 void Object::imageObject()
@@ -98,6 +103,10 @@ void Object::leftclickObject(int x, int y)
     if(x > objsurf.x && x < (objsurf.x + objsurf.w) && y > objsurf.y && y < (objsurf.y + objsurf.h))
     {
         std::cout<<"Leftclick at ("<<x<<","<<y<<") on object\""<<objname<<"\"."<<std::endl;
+        if(door!="")
+        {
+            Room::loadRoom(door);
+        }
     }
 }
 
@@ -105,8 +114,27 @@ void Object::rightclickObject(int x, int y)
 {
     if(x > objsurf.x && x < (objsurf.x + objsurf.w) && y > objsurf.y && y < (objsurf.y + objsurf.h))
     {
-        std::cout<<"Rightclick at ("<<x<<","<<y<<") on object\""<<objname<<"\"."<<std::endl;
+        if(objinfo!="")
+        {
+            std::cout<<objinfo<<std::endl;
+        }
+        else
+        {
+            std::cout<<"I can't find words for this."<<std::endl;
+        }
     }
+}
+
+void Object::clearObject()
+{
+    objname="";
+    objinfo="";
+    door = "";
+    objimage = NULL;
+    inv = NULL;
+    objx = 0;
+    objy = 0;
+    objyline = 900;
 }
 
 Object &getObject(int n)

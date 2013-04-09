@@ -1,0 +1,2 @@
+bgd=02.png
+fgd=logo.png
