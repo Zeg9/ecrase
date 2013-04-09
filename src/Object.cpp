@@ -127,6 +127,10 @@ void Object::rightclickObject(int x, int y)
 
 void Object::clearObject()
 {
+    objsurf.x = 0;
+    objsurf.y = 0;
+    objsurf.w = 0;
+    objsurf.h = 0;
     objname="";
     objinfo="";
     door = "";
