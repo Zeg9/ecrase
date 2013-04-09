@@ -33,7 +33,7 @@ private:
     std::string objname;
     SDL_Surface *objimage;
     SDL_Surface *inv;
-    SDL_Rect surface; 
+    SDL_Rect objsurf; 
     int objx;
     int objy;
 };

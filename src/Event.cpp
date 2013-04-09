@@ -31,8 +31,9 @@ Event::~Event()
 void Event::gameEvent()
 {
     SDL_Event &event = getEvent();
-    int x;
-    int y;
+    int x=0;
+    int y=0;
+    int n=0;
     while(SDL_PollEvent(&event))
     {
         if(event.type==SDL_QUIT)
@@ -45,15 +46,25 @@ void Event::gameEvent()
             {
                 x = event.button.x; 
                 y = event.button.y;
-                std::cout<<x<<" or "<<y<<std::endl;
-                //Object::leftclickObject(x, y);
+                while (n!=19)
+                {
+                    Object &obj = getObject(n);
+                    obj.leftclickObject(x,y);
+                    n++;
+                }
+                n=0;
             }
             else if( event.button.button == SDL_BUTTON_RIGHT ) 
             {
                 x = event.button.x; 
                 y = event.button.y;
-                std::cout<<x<<" not "<<y<<std::endl;
-                //Object::rightclickObject(x, y);
+                while (n!=19)
+                {
+                    Object &obj = getObject(n);
+                    obj.rightclickObject(x,y);
+                    n++;
+                }
+                n=0;
             }
         }
     }

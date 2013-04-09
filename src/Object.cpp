@@ -38,6 +38,8 @@ Object::~Object()
 void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom();
 {
     int n = 0;
+    objsurf.x = x;
+    objsurf.y = y;
     //Give positions of object in room
     objx = x;
     objy = y;
@@ -56,11 +58,13 @@ void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom
         //Different types of values:
         if(name[n]=="image")
         {
-            objimage = d.loadImg("../data/objects/"+value[n]);
+            objimage = d.loadImg("../data/objects/"+value[n]);//Load normal image
+            objsurf.w = objimage->w;//Picture width
+            objsurf.h = objimage->h;//Picture height
         }
         else if(name[n]=="inv")
         {
-            inv = d.loadImg("../data/objects/"+value[n]);
+            inv = d.loadImg("../data/objects/"+value[n]);//Load inventory image
         }
         else if(name[n]=="name")
         {
@@ -80,6 +84,7 @@ void Object::loadObject(std::string filename, int x, int y)//Loads like loadRoom
         n++;
     }
     file.close();
+    std::cout<<"("<<objsurf.x<<","<<objsurf.y<<","<<objsurf.w<<","<<objsurf.h<<")..."<<std::endl;
 }
 
 void Object::imageObject()
@@ -90,12 +95,18 @@ void Object::imageObject()
 
 void Object::leftclickObject(int x, int y)
 {
-    std::cout<<"Leftclick at ("<<x<<","<<y<<")."<<std::endl;
+    if(x > objsurf.x && x < (objsurf.x + objsurf.w) && y > objsurf.y && y < (objsurf.y + objsurf.h))
+    {
+        std::cout<<"Leftclick at ("<<x<<","<<y<<") on object\""<<objname<<"\"."<<std::endl;
+    }
 }
 
 void Object::rightclickObject(int x, int y)
 {
-    std::cout<<"Rightclick at ("<<x<<","<<y<<")."<<std::endl;
+    if(x > objsurf.x && x < (objsurf.x + objsurf.w) && y > objsurf.y && y < (objsurf.y + objsurf.h))
+    {
+        std::cout<<"Rightclick at ("<<x<<","<<y<<") on object\""<<objname<<"\"."<<std::endl;
+    }
 }
 
 Object &getObject(int n)
