@@ -1,0 +1,4 @@
+bgd=example.png
+obj=trans2.txt
+0
+0

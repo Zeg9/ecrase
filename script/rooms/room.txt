@@ -1,8 +1,8 @@
-bgd=01.png
+bgd=desert.png
 fgd=logo.png
 obj=01.txt
 123
 345
 obj=02.txt
-400
-150
+450
+170

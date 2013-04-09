@@ -1,0 +1,4 @@
+bgd=ecrase.png
+obj=trans1.txt
+0
+0

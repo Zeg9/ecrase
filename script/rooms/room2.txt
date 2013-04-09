@@ -1,2 +1,5 @@
-bgd=02.png
+bgd=inside.png
 fgd=logo.png
+obj=03.txt
+460
+50

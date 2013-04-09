@@ -1,0 +1,5 @@
+name=Exit
+image=door.png
+inv=door.png
+info=I could get some fresh air.
+door=room.txt

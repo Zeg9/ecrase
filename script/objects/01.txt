@@ -1,4 +1,4 @@
 name=A beautiful vase
-image=01.png
-inv=01.png
+image=vase.png
+inv=vase.png
 info=Looks greek.

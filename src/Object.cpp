@@ -106,6 +106,7 @@ void Object::leftclickObject(int x, int y)
         if(door!="")
         {
             Room::loadRoom(door);
+            //TODO: Fix problem of too fast loading here!!!
         }
     }
 }

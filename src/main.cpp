@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     int oldticks = 0;
     int fps;//Frames per second
     int test;
-    Room::loadRoom("room.txt");
+    Room::loadRoom("intro.txt");
     while(true)
     {
         Event::gameEvent();

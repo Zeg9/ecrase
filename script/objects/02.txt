@@ -1,5 +1,5 @@
-name=Exit
-image=02.png
-inv=02.png
-info=It seems to be a door.
+name=Entry
+image=door.png
+inv=door.png
+info=The door leads into a building.
 door=room2.txt
