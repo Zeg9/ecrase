@@ -28,8 +28,9 @@ public:
     Video();
     ~Video();
     static SDL_Surface* loadImg(std::string filename);
-    static void Video::onScreen(SDL_Surface* imageToShow, int x, int y);
-    static void Video::renderIt();
+    SDL_Surface* loadFont(std::string text);
+    static void onScreen(SDL_Surface* imageToShow, int x, int y);
+    static void renderIt();
     static SDL_Surface* screen;
 };
 
