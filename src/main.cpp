@@ -23,6 +23,8 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include "Layers.h"
 #include "Event.h"
 
+bool quit_engine = false;
+
 int main(int argc, char *argv[])
 {
     Video &d = getVideo();
@@ -30,7 +32,7 @@ int main(int argc, char *argv[])
     int fps;//Frames per second
     int test;
     Room::loadRoom("intro.txt");
-    while(true)
+    while(!quit_engine)
     {
         Event::gameEvent();
         Layers::drawLayers();

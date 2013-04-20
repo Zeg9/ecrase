@@ -20,6 +20,8 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include "Event.h"
 #include "Object.h"
 
+extern bool quit_engine;
+
 Event::Event()
 {
 }
@@ -38,6 +40,7 @@ void Event::gameEvent()
     {
         if(event.type==SDL_QUIT)
         {
+        	quit_engine = true;
         }
         
         if(event.type==SDL_MOUSEBUTTONDOWN)
