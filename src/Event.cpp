@@ -21,6 +21,7 @@ and to alter it and redistribute it freely, subject to the following restriction
 #include "Object.h"
 
 extern bool quit_engine;
+extern bool reload_room;
 
 Event::Event()
 {
@@ -53,6 +54,11 @@ void Event::gameEvent()
                 {
                     Object &obj = getObject(n);
                     obj.leftclickObject(x,y);
+                    if (reload_room)
+                    {
+                    	reload_room = false;
+                    	break;
+                    }
                     n++;
                 }
                 n=0;
@@ -65,6 +71,11 @@ void Event::gameEvent()
                 {
                     Object &obj = getObject(n);
                     obj.rightclickObject(x,y);
+                    if (reload_room)
+                    {
+                    	reload_room = false;
+                    	break;
+                    }
                     n++;
                 }
                 n=0;

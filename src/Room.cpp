@@ -27,6 +27,7 @@ and to alter it and redistribute it freely, subject to the following restriction
 SDL_Surface *Room::bgd;//Background image
 SDL_Surface *Room::fgd;//Foreground image
 std::string objects[30];//Stores all objects
+bool reload_room = false; //Set this to true when the room is just loaded
 
 Room::Room()
 {
@@ -38,6 +39,7 @@ Room::~Room()
 
 void Room::loadRoom(std::string filename)
 {
+	reload_room = true;
     int n = 0;
     for(n=0; n!=19; n++)
     {
